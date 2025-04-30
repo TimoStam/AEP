@@ -7,18 +7,20 @@
 #include "draaideur.h"
 #include "defines.h"
 #include <vector>
+#include <memory>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    s1=new HallSensor(515,160);
-    d1=new Schuifdeur(503, 250, 80, VERTICAL);
+    s1 = std::make_unique<HallSensor>(515, 160);
+    d1 = std::make_unique<Schuifdeur>(503, 250, 80, VERTICAL);
+    d2 = std::make_unique<Draaideur>(295, 290, 30, HORIZONTAL);
+    d3 = std::make_unique<Draaideur>(248, 140, 40, VERTICAL);
 
-    d2=new Draaideur(295, 290, 30, HORIZONTAL);
-    d3=new Draaideur(248, 140, 40, VERTICAL);
-    draaideuren = {d2, d3};
+    draaideuren.push_back(std::move(d2));
+    draaideuren.push_back(std::move(d3));
 }
 
 void MainWindow::paintEvent(QPaintEvent *event){
@@ -34,8 +36,9 @@ void MainWindow::paintEvent(QPaintEvent *event){
 
     s1->teken(this);
     d1->draw(this);
-    d2->draw(this);
-    d3->draw(this);
+    for (const auto& deur : draaideuren){
+        deur->draw(this);
+    }
 }
 
 MainWindow::~MainWindow()
@@ -81,10 +84,10 @@ void MainWindow::on_D1_clicked()
 void MainWindow::on_D2_clicked()
 {
 
-    if (d2->isOpen()){
-        d2->dClose();
+    if (draaideuren[0]->isOpen()){
+        draaideuren[0]->dClose();
     } else {
-        d2->dOpen();
+        draaideuren[0]->dOpen();
     }
     update();
 }
@@ -92,10 +95,10 @@ void MainWindow::on_D2_clicked()
 
 void MainWindow::on_D3_clicked()
 {
-    if (d3->isOpen()){
-        d3->dClose();
+    if (draaideuren[1]->isOpen()){
+        draaideuren[1]->dClose();
     } else {
-        d3->dOpen();
+        draaideuren[1]->dOpen();
     }
     update();
 }

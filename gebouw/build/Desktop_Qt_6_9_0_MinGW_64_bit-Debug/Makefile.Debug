@@ -1203,7 +1203,8 @@ debug/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../hallsensor.h \
 		../../schuifdeur.h \
 		../../deur.h \
-		../../draaideur.h
+		../../draaideur.h \
+		../../defines.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/mainwindow.o ../../mainwindow.cpp
 
 debug/schuifdeur.o: ../../schuifdeur.cpp ../../schuifdeur.h \

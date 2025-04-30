@@ -33,10 +33,11 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    Sensor *s1;
-    Schuifdeur *d1;
-    Draaideur *d2;
-    Draaideur *d3;
-    std::vector<Draaideur*> draaideuren;
+    std::unique_ptr<Sensor> s1;
+    std::unique_ptr<Schuifdeur> d1;
+    std::unique_ptr<Draaideur> d2;
+    std::unique_ptr<Draaideur> d3;
+    std::vector<std::unique_ptr<Draaideur>> draaideuren;
 };
+
 #endif // MAINWINDOW_H
