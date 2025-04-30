@@ -5,8 +5,8 @@
 class Deur
 {
 public:
-    Deur();
-    void open();
+    Deur(int, int, int);
+    virtual void open();
     virtual void close();
     virtual void draw(QPaintDevice*);
     bool isOpen();

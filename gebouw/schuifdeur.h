@@ -7,9 +7,12 @@
 class Schuifdeur : public Deur
 {
 public:
-    Schuifdeur();
-    void close();
+    Schuifdeur(int x, int y, int length, bool isHorizontal);
+    void sClose();
+    void sOpen();
     void draw(QPaintDevice*);
+private:
+    bool horizontal; //true = horizontal, false = vertical
 };
 
 #endif // SCHUIFDEUR_H

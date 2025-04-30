@@ -19,12 +19,25 @@
      <rect>
       <x>590</x>
       <y>100</y>
-      <width>83</width>
-      <height>29</height>
+      <width>141</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string>schuifdeurSensorKnop</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="schuifdeurKnop">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>160</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>schuifdeurKnop</string>
     </property>
    </widget>
   </widget>
@@ -34,7 +47,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

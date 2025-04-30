@@ -1,9 +1,10 @@
 #include "deur.h"
+#include "defines.h"
 #include <QPaintDevice>
 #include <QPainter>
 #include <QPen>
 
-Deur::Deur() {}
+Deur::Deur(int a, int b, int dLength) : status(false), x(a), y(b), length(dLength) {}
 
 void Deur::open(){
     status=true;

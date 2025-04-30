@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     deur.cpp \
+    draaideur.cpp \
     hallsensor.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -17,7 +18,9 @@ SOURCES += \
     sensor.cpp
 
 HEADERS += \
+    defines.h \
     deur.h \
+    draaideur.h \
     hallsensor.h \
     mainwindow.h \
     schuifdeur.h \
