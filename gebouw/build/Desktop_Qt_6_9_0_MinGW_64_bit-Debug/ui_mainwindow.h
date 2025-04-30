@@ -25,6 +25,9 @@ public:
     QWidget *centralwidget;
     QPushButton *schuifdeurSensorKnop;
     QPushButton *schuifdeurKnop;
+    QPushButton *D1;
+    QPushButton *D2;
+    QPushButton *D3;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -41,6 +44,15 @@ public:
         schuifdeurKnop = new QPushButton(centralwidget);
         schuifdeurKnop->setObjectName("schuifdeurKnop");
         schuifdeurKnop->setGeometry(QRect(590, 160, 141, 31));
+        D1 = new QPushButton(centralwidget);
+        D1->setObjectName("D1");
+        D1->setGeometry(QRect(580, 250, 80, 24));
+        D2 = new QPushButton(centralwidget);
+        D2->setObjectName("D2");
+        D2->setGeometry(QRect(580, 300, 80, 24));
+        D3 = new QPushButton(centralwidget);
+        D3->setObjectName("D3");
+        D3->setGeometry(QRect(580, 350, 80, 24));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -60,6 +72,9 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         schuifdeurSensorKnop->setText(QCoreApplication::translate("MainWindow", "schuifdeurSensorKnop", nullptr));
         schuifdeurKnop->setText(QCoreApplication::translate("MainWindow", "schuifdeurKnop", nullptr));
+        D1->setText(QCoreApplication::translate("MainWindow", "D1", nullptr));
+        D2->setText(QCoreApplication::translate("MainWindow", "D2", nullptr));
+        D3->setText(QCoreApplication::translate("MainWindow", "D3", nullptr));
     } // retranslateUi
 
 };

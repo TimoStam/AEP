@@ -40,6 +40,45 @@
      <string>schuifdeurKnop</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="D1">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>250</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>D1</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="D2">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>300</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>D2</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="D3">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>350</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>D3</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
