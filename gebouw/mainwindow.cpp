@@ -1,11 +1,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QPainter>
+#include <QLineEdit>
+#include <QString>
 #include "sensor.h"
 #include "hallsensor.h"
 #include "schuifdeur.h"
 #include "draaideur.h"
 #include "defines.h"
+#include "codeslot.h"
 #include <vector>
 #include <memory>
 
@@ -15,12 +18,16 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     s1 = std::make_unique<HallSensor>(515, 160);
+
+    //verander constructor zodat codeslot meegegeven wordt
     d1 = std::make_unique<Schuifdeur>(503, 250, 80, VERTICAL);
     d2 = std::make_unique<Draaideur>(295, 290, 30, HORIZONTAL);
     d3 = std::make_unique<Draaideur>(248, 140, 40, VERTICAL);
 
     draaideuren.push_back(std::move(d2));
     draaideuren.push_back(std::move(d3));
+
+    codeslot = std::make_shared<Codeslot>(1234);
 }
 
 void MainWindow::paintEvent(QPaintEvent *event){
@@ -99,6 +106,17 @@ void MainWindow::on_D3_clicked()
         draaideuren[1]->dClose();
     } else {
         draaideuren[1]->dOpen();
+    }
+    update();
+}
+
+
+void MainWindow::on_codeSubmission_clicked()
+{
+    QString aKey = lineEdit->text();
+    codeslot->unlock(aKey.toStdString());
+    if (!codeslot->isLocked()){
+        d1->sOpen();
     }
     update();
 }

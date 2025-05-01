@@ -7,6 +7,7 @@
 Sensor::Sensor(int a,int b): x(a),y(b),geactiveerd(false)
 {
 }
+Sensor::~Sensor(){}
 
 void Sensor::activeer()
 {

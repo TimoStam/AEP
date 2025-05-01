@@ -7,5 +7,7 @@
 #define INACTIVE false
 #define HORIZONTAL true
 #define VERTICAL false
+#define UNLOCKED true
+#define LOCKED false
 
 #endif // DEFINES_H

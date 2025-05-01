@@ -4,14 +4,18 @@
 #include <QPainter>
 #include <QPen>
 
-Deur::Deur(int a, int b, int dLength) : status(false), x(a), y(b), length(dLength) {}
+Deur::Deur(int a, int b, int dLength, Codeslot cs) : status(false), x(a), y(b), length(dLength), codeslot(std::make_shared<Codeslot>(cs)){}
+
+Deur::~Deur(){}
 
 void Deur::open(){
-    status=true;
+    status=OPEN;
 }
 
 void Deur::close(){
-    status=false;
+    status=CLOSED;
+    codeslot->lock();
+
 }
 
 void Deur::draw(QPaintDevice* tp){

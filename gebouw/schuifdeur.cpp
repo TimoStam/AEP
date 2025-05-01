@@ -2,7 +2,7 @@
 #include <QPaintDevice>
 #include <QPainter>
 #include <QPen>
-Schuifdeur::Schuifdeur(int a, int b, int dLength, bool isHorizontal) : Deur(a, b, dLength), horizontal(isHorizontal) {}
+Schuifdeur::Schuifdeur(int a, int b, int dLength, bool isHorizontal) : Deur(a, b, dLength, codeslot), horizontal(isHorizontal) {}
 
 void Schuifdeur::sClose(){
         close();

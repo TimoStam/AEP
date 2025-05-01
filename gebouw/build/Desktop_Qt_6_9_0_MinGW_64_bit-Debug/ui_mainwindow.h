@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -28,6 +29,8 @@ public:
     QPushButton *D1;
     QPushButton *D2;
     QPushButton *D3;
+    QLineEdit *codeInput;
+    QPushButton *codeSubmission;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -53,10 +56,16 @@ public:
         D3 = new QPushButton(centralwidget);
         D3->setObjectName("D3");
         D3->setGeometry(QRect(580, 350, 80, 24));
+        codeInput = new QLineEdit(centralwidget);
+        codeInput->setObjectName("codeInput");
+        codeInput->setGeometry(QRect(570, 410, 113, 28));
+        codeSubmission = new QPushButton(centralwidget);
+        codeSubmission->setObjectName("codeSubmission");
+        codeSubmission->setGeometry(QRect(590, 460, 101, 29));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 21));
+        menubar->setGeometry(QRect(0, 0, 800, 25));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
@@ -75,6 +84,7 @@ public:
         D1->setText(QCoreApplication::translate("MainWindow", "D1", nullptr));
         D2->setText(QCoreApplication::translate("MainWindow", "D2", nullptr));
         D3->setText(QCoreApplication::translate("MainWindow", "D3", nullptr));
+        codeSubmission->setText(QCoreApplication::translate("MainWindow", "codeSubmission", nullptr));
     } // retranslateUi
 
 };

@@ -1,19 +1,22 @@
 #ifndef DEUR_H
 #define DEUR_H
 #include <QMainWindow>
+#include "codeslot.h"
 
 class Deur
 {
 public:
-    Deur(int, int, int);
+    Deur(int, int, int, Codeslot);
+    virtual ~Deur();
     virtual void open();
     virtual void close();
     virtual void draw(QPaintDevice*);
-    bool isOpen();
-    int doorLength();
-    int xCoordinate() const;
-    int yCoordinate() const;
+    virtual bool isOpen();
+    virtual int doorLength();
+    virtual int xCoordinate() const;
+    virtual int yCoordinate() const;
 private:
+    std::shared_ptr<Codeslot> codeslot;
     bool status;
     int x;
     int y;
