@@ -24,7 +24,6 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QPushButton *schuifdeurSensorKnop;
-    QPushButton *schuifdeurKnop;
     QPushButton *D1;
     QPushButton *D2;
     QPushButton *D3;
@@ -41,9 +40,6 @@ public:
         schuifdeurSensorKnop = new QPushButton(centralwidget);
         schuifdeurSensorKnop->setObjectName("schuifdeurSensorKnop");
         schuifdeurSensorKnop->setGeometry(QRect(590, 100, 141, 31));
-        schuifdeurKnop = new QPushButton(centralwidget);
-        schuifdeurKnop->setObjectName("schuifdeurKnop");
-        schuifdeurKnop->setGeometry(QRect(590, 160, 141, 31));
         D1 = new QPushButton(centralwidget);
         D1->setObjectName("D1");
         D1->setGeometry(QRect(580, 250, 80, 24));
@@ -71,7 +67,6 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         schuifdeurSensorKnop->setText(QCoreApplication::translate("MainWindow", "schuifdeurSensorKnop", nullptr));
-        schuifdeurKnop->setText(QCoreApplication::translate("MainWindow", "schuifdeurKnop", nullptr));
         D1->setText(QCoreApplication::translate("MainWindow", "D1", nullptr));
         D2->setText(QCoreApplication::translate("MainWindow", "D2", nullptr));
         D3->setText(QCoreApplication::translate("MainWindow", "D3", nullptr));

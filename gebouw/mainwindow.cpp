@@ -4,6 +4,7 @@
 #include "sensor.h"
 #include "hallsensor.h"
 #include "schuifdeur.h"
+#include "deur.h"
 #include "draaideur.h"
 #include "defines.h"
 #include <vector>
@@ -15,12 +16,12 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     s1 = std::make_unique<HallSensor>(515, 160);
-    d1 = std::make_unique<Schuifdeur>(503, 250, 80, VERTICAL);
-    d2 = std::make_unique<Draaideur>(295, 290, 30, HORIZONTAL);
-    d3 = std::make_unique<Draaideur>(248, 140, 40, VERTICAL);
-
-    draaideuren.push_back(std::move(d2));
-    draaideuren.push_back(std::move(d3));
+    // d1 = std::make_unique<Schuifdeur>(503, 250, 80, VERTICAL);
+    // d2 = std::make_unique<Draaideur>(295, 290, 30, HORIZONTAL);
+    // d3 = std::make_unique<Draaideur>(248, 140, 40, VERTICAL);
+    deuren.push_back(std::make_unique<Schuifdeur>(503, 250, 80, VERTICAL, s1.get()));
+    deuren.push_back(std::make_unique<Draaideur>(295, 290, 30, HORIZONTAL));
+    deuren.push_back(std::make_unique<Draaideur>(248, 140, 40, VERTICAL));
 }
 
 void MainWindow::paintEvent(QPaintEvent *event){
@@ -35,8 +36,7 @@ void MainWindow::paintEvent(QPaintEvent *event){
     painter.drawImage(10,10,image);
 
     s1->teken(this);
-    d1->draw(this);
-    for (const auto& deur : draaideuren){
+    for (const auto& deur : deuren){
         deur->draw(this);
     }
 }
@@ -46,10 +46,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 void MainWindow::on_schuifdeurSensorKnop_clicked()
 {
-    if (s1->isGeactiveerd() == true){
+    if (s1->isGeactiveerd()){
         s1->deactiveer();
     } else {
         s1->activeer();
@@ -57,25 +56,25 @@ void MainWindow::on_schuifdeurSensorKnop_clicked()
     update();
 }
 
-void MainWindow::on_schuifdeurKnop_clicked()
-{
-    if (d1->isOpen()){
-        if(!s1->isGeactiveerd()){
-            d1->sClose();
-        }
-    } else {
-        d1->sOpen();
-    }
-    update();
-}
+// void MainWindow::on_schuifdeurKnop_clicked()
+// {
+//     if (d1->isOpen()){
+//         if(!s1->isGeactiveerd()){
+//             d1->sClose();
+//         }
+//     } else {
+//         d1->sOpen();
+//     }
+//     update();
+// }
 
 
 void MainWindow::on_D1_clicked()
 {
-    if (d1->isOpen()){
-        d1->sClose();
+    if (deuren[0]->isOpen()){
+        deuren[0]->close();
     } else {
-        d1->sOpen();
+        deuren[0]->open();
     }
     update();
 }
@@ -84,10 +83,10 @@ void MainWindow::on_D1_clicked()
 void MainWindow::on_D2_clicked()
 {
 
-    if (draaideuren[0]->isOpen()){
-        draaideuren[0]->dClose();
+    if (deuren[1]->isOpen()){
+        deuren[1]->close();
     } else {
-        draaideuren[0]->dOpen();
+        deuren[1]->open();
     }
     update();
 }
@@ -95,10 +94,10 @@ void MainWindow::on_D2_clicked()
 
 void MainWindow::on_D3_clicked()
 {
-    if (draaideuren[1]->isOpen()){
-        draaideuren[1]->dClose();
+    if (deuren[2]->isOpen()){
+        deuren[2]->close();
     } else {
-        draaideuren[1]->dOpen();
+        deuren[2]->open();
     }
     update();
 }

@@ -6,13 +6,6 @@
 Draaideur::Draaideur(int a, int b, int dLength, bool isHorizontal)
     : Deur(a, b, dLength), horizontal(isHorizontal) {}
 
-void Draaideur::dClose() {
-        close();
-}
-
-void Draaideur::dOpen() {
-        open();
-}
 
 void Draaideur::draw(QPaintDevice* tp) {
     QPainter painter(tp);

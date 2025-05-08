@@ -7,8 +7,6 @@ class Draaideur : public Deur
 {
 public:
     Draaideur(int x, int y, int length, bool isHorizontal);
-    void dClose();
-    void dOpen();
     void draw(QPaintDevice*);
 private:
     bool horizontal;
