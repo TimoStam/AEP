@@ -26,7 +26,7 @@ public:
 private slots:
     void on_schuifdeurSensorKnop_clicked();
 
-    void on_schuifdeurKnop_clicked();
+    // void on_schuifdeurKnop_clicked();
 
     void on_D1_clicked();
 
@@ -40,10 +40,10 @@ private:
     Ui::MainWindow *ui;
     QLineEdit* lineEdit;
     std::unique_ptr<Sensor> s1;
-    std::unique_ptr<Schuifdeur> d1;
-    std::unique_ptr<Draaideur> d2;
-    std::unique_ptr<Draaideur> d3;
-    std::vector<std::unique_ptr<Draaideur>> draaideuren;
+    // std::unique_ptr<Schuifdeur> d1;
+    // std::unique_ptr<Draaideur> d2;
+    // std::unique_ptr<Draaideur> d3;
+    std::vector<std::unique_ptr<Deur>> deuren;
     std::shared_ptr<Codeslot> codeslot;
 };
 
