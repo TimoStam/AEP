@@ -14,6 +14,7 @@ class Schuifdeur;
 class Slot;
 class Draaideur;
 class Codeslot;
+class Sleutelslot;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -34,8 +35,6 @@ private slots:
 
     void on_D3_clicked();
 
-    void on_codeSubmission_clicked();
-
 private:
     Ui::MainWindow *ui;
     QLineEdit* lineEdit;
@@ -44,7 +43,14 @@ private:
     // std::unique_ptr<Draaideur> d2;
     // std::unique_ptr<Draaideur> d3;
     std::vector<std::unique_ptr<Deur>> deuren;
-    std::shared_ptr<Codeslot> codeslot;
+    std::vector<std::shared_ptr<Slot>> sloten;
+
+    std::shared_ptr<Slot> slot;
+    std::shared_ptr<Sleutelslot> sl1;
+    std::shared_ptr<Sleutelslot> sl2;
+    std::shared_ptr<Codeslot> cs1;
+    std::shared_ptr<Codeslot> cs2;
+    std::shared_ptr<Codeslot> cs3;
 };
 
 #endif // MAINWINDOW_H

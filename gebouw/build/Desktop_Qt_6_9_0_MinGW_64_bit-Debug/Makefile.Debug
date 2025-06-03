@@ -581,7 +581,6 @@ debug/deur.o: ../../deur.cpp ../../deur.h \
 		C:/Qt/6.9.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.9.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		C:/Qt/6.9.0/mingw_64/include/QtWidgets/qtabwidget.h \
-		../../codeslot.h \
 		../../slot.h \
 		../../defines.h \
 		C:/Qt/6.9.0/mingw_64/include/QtGui/QPaintDevice \
@@ -793,7 +792,6 @@ debug/draaideur.o: ../../draaideur.cpp ../../draaideur.h \
 		C:/Qt/6.9.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		C:/Qt/6.9.0/mingw_64/include/QtWidgets/qtabwidget.h \
 		../../deur.h \
-		../../codeslot.h \
 		../../slot.h \
 		C:/Qt/6.9.0/mingw_64/include/QtGui/QPaintDevice \
 		C:/Qt/6.9.0/mingw_64/include/QtGui/QPainter \
@@ -1235,10 +1233,10 @@ debug/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../hallsensor.h \
 		../../schuifdeur.h \
 		../../deur.h \
-		../../codeslot.h \
 		../../slot.h \
 		../../draaideur.h \
-		../../defines.h
+		../../defines.h \
+		../../sleutelslot.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\..\mainwindow.cpp
 
 debug/schuifdeur.o: ../../schuifdeur.cpp ../../schuifdeur.h \
@@ -1442,7 +1440,6 @@ debug/schuifdeur.o: ../../schuifdeur.cpp ../../schuifdeur.h \
 		C:/Qt/6.9.0/mingw_64/include/QtGui/qguiapplication_platform.h \
 		C:/Qt/6.9.0/mingw_64/include/QtWidgets/qtabwidget.h \
 		../../deur.h \
-		../../codeslot.h \
 		../../slot.h \
 		../../sensor.h \
 		C:/Qt/6.9.0/mingw_64/include/QtGui/QPaintDevice \

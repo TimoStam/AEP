@@ -2,7 +2,8 @@
 #include <QPaintDevice>
 #include <QPainter>
 #include <QPen>
-Schuifdeur::Schuifdeur(int a, int b, int dLength, bool isHorizontal, Sensor* sensor1) : Deur(a, b, dLength, codeslot), horizontal(isHorizontal), sensor1(sensor1) {}
+Schuifdeur::Schuifdeur(int a, int b, int dLength, bool isHorizontal, Sensor* sensor1)
+    : Deur(a, b, dLength), horizontal(isHorizontal), sensor1(sensor1) {}
 
 void Schuifdeur::close(){
     if (!sensor1->isGeactiveerd()){

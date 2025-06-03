@@ -7,9 +7,10 @@
 #include "hallsensor.h"
 #include "schuifdeur.h"
 #include "deur.h"
+#include "codeslot.h"
 #include "draaideur.h"
 #include "defines.h"
-#include "codeslot.h"
+#include "sleutelslot.h"
 #include <vector>
 #include <memory>
 
@@ -19,14 +20,31 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     s1 = std::make_unique<HallSensor>(515, 160);
+
     // d1 = std::make_unique<Schuifdeur>(503, 250, 80, VERTICAL);
     // d2 = std::make_unique<Draaideur>(295, 290, 30, HORIZONTAL);
     // d3 = std::make_unique<Draaideur>(248, 140, 40, VERTICAL);
+    sl1 = std::make_shared<Sleutelslot> ("slot");
+    sl2 = std::make_shared<Sleutelslot> ("key");
+    cs1 = std::make_shared<Codeslot>(1234);
+    cs2 = std::make_shared<Codeslot>(4321);
+    cs3 = std::make_shared<Codeslot>(5678);
+
     deuren.push_back(std::make_unique<Schuifdeur>(503, 250, 80, VERTICAL, s1.get()));
     deuren.push_back(std::make_unique<Draaideur>(295, 290, 30, HORIZONTAL));
     deuren.push_back(std::make_unique<Draaideur>(248, 140, 40, VERTICAL));
-    codeslot = std::make_shared<Codeslot>(1234);
 
+    deuren[0]->addSlot(sl1);
+    deuren[0]->addSlot(sl2);
+    deuren[1]->addSlot(cs1);
+    deuren[2]->addSlot(cs2);
+    deuren[2]->addSlot(cs3);
+
+    sloten.push_back(sl1);
+    sloten.push_back(sl2);
+    sloten.push_back(cs1);
+    sloten.push_back(cs2);
+    sloten.push_back(cs3);
 }
 
 void MainWindow::paintEvent(QPaintEvent *event){
@@ -76,22 +94,38 @@ void MainWindow::on_schuifdeurSensorKnop_clicked()
 
 void MainWindow::on_D1_clicked()
 {
+    std::string key1 = ui->codeInput->text().toStdString();
+    std::string key2 = ui->codeInput_4->text().toStdString();
     if (deuren[0]->isOpen()){
         deuren[0]->close();
+        deuren[0]->getSloten()[0]->lock();
+        deuren[0]->getSloten()[1]->lock();
+
+        update();
     } else {
-        deuren[0]->open();
+        sl1->unlock(key1);
+        sl2->unlock(key2);
+        if (!deuren[0]->getSloten()[0]->isLocked() &&
+            !deuren[0]->getSloten()[1]->isLocked()){
+            deuren[0]->open();
+        }
+        update();
     }
-    update();
 }
 
 
 void MainWindow::on_D2_clicked()
 {
-
+    std::string code = ui->codeInput_2->text().toStdString();
     if (deuren[1]->isOpen()){
         deuren[1]->close();
+        deuren[1]->getSloten()[0]->lock();
+        update();
     } else {
-        deuren[1]->open();
+        cs1->unlock(code);
+        if (!deuren[1]->getSloten()[0]->isLocked()){
+            deuren[1]->open();
+        }
     }
     update();
 }
@@ -99,22 +133,20 @@ void MainWindow::on_D2_clicked()
 
 void MainWindow::on_D3_clicked()
 {
+    std::string code1 = ui->codeInput_3->text().toStdString();
+    std::string code2 = ui->codeInput_5->text().toStdString();
     if (deuren[2]->isOpen()){
         deuren[2]->close();
+        deuren[2]->getSloten()[0]->lock();
+        deuren[2]->getSloten()[1]->lock();
+        update();
     } else {
-        deuren[2]->open();
+        cs2->unlock(code1);
+        cs3->unlock(code2);
+        if (!deuren[2]->getSloten()[0]->isLocked() &&
+            !deuren[2]->getSloten()[1]->isLocked()){
+            deuren[2]->open();
+        }
     }
     update();
 }
-
-
-void MainWindow::on_codeSubmission_clicked()
-{
-    QString aKey = lineEdit->text();
-    codeslot->unlock(aKey.toStdString());
-    if (!codeslot->isLocked()){
-        deuren[0]->open();
-    }
-    update();
-}
-

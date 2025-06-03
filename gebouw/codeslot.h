@@ -7,7 +7,7 @@ public:
     Codeslot(int code);
     void lock()override;
     void unlock(const std::string& sCode)override;
-    bool isLocked()override;
+    bool isLocked()const override;
 private:
     int correctCode;
     bool locked;

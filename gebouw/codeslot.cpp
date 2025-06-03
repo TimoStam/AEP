@@ -9,12 +9,19 @@ void Codeslot::lock(){
 }
 
 void Codeslot::unlock(const std::string& sCode) {
-        int code = std::stoi(sCode);
+    int code = 0;
+    try {
+        code = std::stoi(sCode);
+    }
+
+    catch (const std::exception& e){return;}
+
         if (code == correctCode){
             locked = UNLOCKED;
         }
+
 }
 
-bool Codeslot::isLocked(){
+bool Codeslot::isLocked()const {
     return locked;
 }

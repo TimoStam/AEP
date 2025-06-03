@@ -29,7 +29,10 @@ public:
     QPushButton *D2;
     QPushButton *D3;
     QLineEdit *codeInput;
-    QPushButton *codeSubmission;
+    QLineEdit *codeInput_2;
+    QLineEdit *codeInput_3;
+    QLineEdit *codeInput_4;
+    QLineEdit *codeInput_5;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -54,10 +57,19 @@ public:
         D3->setGeometry(QRect(580, 350, 80, 24));
         codeInput = new QLineEdit(centralwidget);
         codeInput->setObjectName("codeInput");
-        codeInput->setGeometry(QRect(570, 410, 113, 28));
-        codeSubmission = new QPushButton(centralwidget);
-        codeSubmission->setObjectName("codeSubmission");
-        codeSubmission->setGeometry(QRect(590, 460, 101, 29));
+        codeInput->setGeometry(QRect(670, 250, 113, 28));
+        codeInput_2 = new QLineEdit(centralwidget);
+        codeInput_2->setObjectName("codeInput_2");
+        codeInput_2->setGeometry(QRect(670, 300, 113, 28));
+        codeInput_3 = new QLineEdit(centralwidget);
+        codeInput_3->setObjectName("codeInput_3");
+        codeInput_3->setGeometry(QRect(670, 350, 113, 28));
+        codeInput_4 = new QLineEdit(centralwidget);
+        codeInput_4->setObjectName("codeInput_4");
+        codeInput_4->setGeometry(QRect(670, 200, 113, 28));
+        codeInput_5 = new QLineEdit(centralwidget);
+        codeInput_5->setObjectName("codeInput_5");
+        codeInput_5->setGeometry(QRect(670, 400, 113, 28));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -79,7 +91,6 @@ public:
         D1->setText(QCoreApplication::translate("MainWindow", "D1", nullptr));
         D2->setText(QCoreApplication::translate("MainWindow", "D2", nullptr));
         D3->setText(QCoreApplication::translate("MainWindow", "D3", nullptr));
-        codeSubmission->setText(QCoreApplication::translate("MainWindow", "codeSubmission", nullptr));
     } // retranslateUi
 
 };

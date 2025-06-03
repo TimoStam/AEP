@@ -9,7 +9,7 @@ public:
     Sleutelslot(std::string correctKey);
     void lock()override;
     void unlock(const std::string& key)override;
-    bool isLocked()override;
+    bool isLocked()const override;
 private:
     std::string correctKey;
     bool locked;

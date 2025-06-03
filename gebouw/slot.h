@@ -9,7 +9,7 @@ public:
     virtual ~Slot();
     virtual void unlock(const std::string&) = 0;
     virtual void lock() = 0;
-    virtual bool isLocked() = 0;
+    virtual bool isLocked()const = 0;
 };
 
 #endif // SLOT_H
