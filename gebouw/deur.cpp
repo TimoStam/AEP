@@ -10,11 +10,19 @@ Deur::Deur(int a, int b, int dLength)
 Deur::~Deur(){}
 
 void Deur::open(){
-        status=OPEN;
+    for (int i = 0; i < getSloten().size(); i++){
+        if (getSloten()[i]->isLocked()){
+            return;
+        }
+    }
+    status=OPEN;
 }
 
 void Deur::close(){
-        status=CLOSED;
+    for (int i = 0; i< getSloten().size(); i++){
+        getSloten()[i]->lock();
+    }
+    status=CLOSED;
 }
 
 void Deur::draw(QPaintDevice* tp){

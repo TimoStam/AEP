@@ -92,19 +92,11 @@ void MainWindow::on_D1_clicked()
     std::string key2 = ui->codeInput_4->text().toStdString();
     if (deuren[0]->isOpen()){
         deuren[0]->close();
-        for (int i = 0; i < deuren[0]->getSloten().size(); i++){
-            deuren[0]->getSloten()[i]->lock();
-        }
-
-
         update();
     } else {
         sl1->unlock(key1);
         sl2->unlock(key2);
-        if (!deuren[0]->getSloten()[0]->isLocked() &&
-            !deuren[0]->getSloten()[1]->isLocked()){
-            deuren[0]->open();
-        }
+        deuren[0]->open();
         update();
     }
 }
@@ -115,15 +107,10 @@ void MainWindow::on_D2_clicked()
     std::string code = ui->codeInput_2->text().toStdString();
     if (deuren[1]->isOpen()){
         deuren[1]->close();
-        for (int i = 0; i < deuren[1]->getSloten().size(); i++){
-            deuren[1]->getSloten()[i]->lock();
-        }
         update();
     } else {
         cs1->unlock(code);
-        if (!deuren[1]->getSloten()[0]->isLocked()){
-            deuren[1]->open();
-        }
+        deuren[1]->open();
     }
     update();
 }
@@ -135,17 +122,11 @@ void MainWindow::on_D3_clicked()
     std::string code2 = ui->codeInput_5->text().toStdString();
     if (deuren[2]->isOpen()){
         deuren[2]->close();
-        for (int i = 0; i < deuren[2]->getSloten().size(); i++){
-            deuren[2]->getSloten()[i]->lock();
-        }
         update();
     } else {
         cs2->unlock(code1);
         cs3->unlock(code2);
-        if (!deuren[2]->getSloten()[0]->isLocked() &&
-            !deuren[2]->getSloten()[1]->isLocked()){
-            deuren[2]->open();
-        }
+        deuren[2]->open();
     }
     update();
 }
