@@ -43,7 +43,6 @@ private:
     // std::unique_ptr<Draaideur> d2;
     // std::unique_ptr<Draaideur> d3;
     std::vector<std::unique_ptr<Deur>> deuren;
-    std::vector<std::shared_ptr<Slot>> sloten;
 
     std::shared_ptr<Slot> slot;
     std::shared_ptr<Sleutelslot> sl1;

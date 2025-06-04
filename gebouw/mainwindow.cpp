@@ -39,12 +39,6 @@ MainWindow::MainWindow(QWidget *parent)
     deuren[1]->addSlot(cs1);
     deuren[2]->addSlot(cs2);
     deuren[2]->addSlot(cs3);
-
-    sloten.push_back(sl1);
-    sloten.push_back(sl2);
-    sloten.push_back(cs1);
-    sloten.push_back(cs2);
-    sloten.push_back(cs3);
 }
 
 void MainWindow::paintEvent(QPaintEvent *event){
@@ -98,8 +92,10 @@ void MainWindow::on_D1_clicked()
     std::string key2 = ui->codeInput_4->text().toStdString();
     if (deuren[0]->isOpen()){
         deuren[0]->close();
-        deuren[0]->getSloten()[0]->lock();
-        deuren[0]->getSloten()[1]->lock();
+        for (int i = 0; i < deuren[0]->getSloten().size(); i++){
+            deuren[0]->getSloten()[i]->lock();
+        }
+
 
         update();
     } else {
@@ -119,7 +115,9 @@ void MainWindow::on_D2_clicked()
     std::string code = ui->codeInput_2->text().toStdString();
     if (deuren[1]->isOpen()){
         deuren[1]->close();
-        deuren[1]->getSloten()[0]->lock();
+        for (int i = 0; i < deuren[1]->getSloten().size(); i++){
+            deuren[1]->getSloten()[i]->lock();
+        }
         update();
     } else {
         cs1->unlock(code);
@@ -137,8 +135,9 @@ void MainWindow::on_D3_clicked()
     std::string code2 = ui->codeInput_5->text().toStdString();
     if (deuren[2]->isOpen()){
         deuren[2]->close();
-        deuren[2]->getSloten()[0]->lock();
-        deuren[2]->getSloten()[1]->lock();
+        for (int i = 0; i < deuren[2]->getSloten().size(); i++){
+            deuren[2]->getSloten()[i]->lock();
+        }
         update();
     } else {
         cs2->unlock(code1);
