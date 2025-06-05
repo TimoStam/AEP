@@ -1,7 +1,9 @@
 release/codeslot.o
 release/deur.o
 release/draaideur.o
+release/drukbox.o
 release/hallsensor.o
+release/herkenningsslot.o
 release/main.o
 release/mainwindow.o
 release/schuifdeur.o

@@ -11,6 +11,8 @@
 #include "draaideur.h"
 #include "defines.h"
 #include "sleutelslot.h"
+#include "herkenningsslot.h"
+#include "drukbox.h"
 #include <vector>
 #include <memory>
 
@@ -21,14 +23,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     s1 = std::make_unique<HallSensor>(515, 160);
 
-    // d1 = std::make_unique<Schuifdeur>(503, 250, 80, VERTICAL);
-    // d2 = std::make_unique<Draaideur>(295, 290, 30, HORIZONTAL);
-    // d3 = std::make_unique<Draaideur>(248, 140, 40, VERTICAL);
     sl1 = std::make_shared<Sleutelslot> ("slot");
     sl2 = std::make_shared<Sleutelslot> ("key");
     cs1 = std::make_shared<Codeslot>(1234);
     cs2 = std::make_shared<Codeslot>(4321);
     cs3 = std::make_shared<Codeslot>(5678);
+    hs1 = std::make_shared<HerkenningsSlot>();
+
 
     deuren.push_back(std::make_unique<Schuifdeur>(503, 250, 80, VERTICAL, s1.get()));
     deuren.push_back(std::make_unique<Draaideur>(295, 290, 30, HORIZONTAL));
@@ -37,8 +38,14 @@ MainWindow::MainWindow(QWidget *parent)
     deuren[0]->addSlot(sl1);
     deuren[0]->addSlot(sl2);
     deuren[1]->addSlot(cs1);
+    deuren[1]->addSlot(hs1);
     deuren[2]->addSlot(cs2);
     deuren[2]->addSlot(cs3);
+    {
+        HerkenningsSlot* herkenningsslot = dynamic_cast<HerkenningsSlot*>(hs1.get());
+        herkenningsslot->addDrukbox(new Drukbox(ui->textBrowser));
+    }
+
 }
 
 void MainWindow::paintEvent(QPaintEvent *event){
@@ -105,11 +112,14 @@ void MainWindow::on_D1_clicked()
 void MainWindow::on_D2_clicked()
 {
     std::string code = ui->codeInput_2->text().toStdString();
+    std::string name = ui->name->text().toStdString();
+
     if (deuren[1]->isOpen()){
         deuren[1]->close();
         update();
     } else {
         cs1->unlock(code);
+        hs1->unlock(name);
         deuren[1]->open();
     }
     update();
@@ -130,3 +140,26 @@ void MainWindow::on_D3_clicked()
     }
     update();
 }
+
+void MainWindow::on_allowaccess_clicked()
+{
+    std::string name = ui->nameInput->text().toStdString();
+    HerkenningsSlot* herkenningsslot = dynamic_cast<HerkenningsSlot*>(hs1.get());
+    herkenningsslot->addAuthorisation(name, true);
+}
+
+void MainWindow::on_declineaccess_clicked()
+{
+    std::string name = ui->nameInput->text().toStdString();
+    HerkenningsSlot* herkenningsslot = dynamic_cast<HerkenningsSlot*>(hs1.get());
+    herkenningsslot->addAuthorisation(name, false);
+}
+
+
+
+void MainWindow::on_showCardboxButton_clicked()
+{
+    HerkenningsSlot* herkenningsslot = dynamic_cast<HerkenningsSlot*>(hs1.get());
+    herkenningsslot->showCardbox();
+}
+

@@ -1,5 +1,4 @@
 #include "codeslot.h"
-#include "defines.h"
 #include <cstdlib>
 
 Codeslot::Codeslot(int code) : correctCode(code), locked(true) {}

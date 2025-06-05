@@ -15,6 +15,7 @@ class Slot;
 class Draaideur;
 class Codeslot;
 class Sleutelslot;
+class HerkenningsSlot;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -27,23 +28,26 @@ public:
 private slots:
     void on_schuifdeurSensorKnop_clicked();
 
-    // void on_schuifdeurKnop_clicked();
-
     void on_D1_clicked();
 
     void on_D2_clicked();
 
     void on_D3_clicked();
 
+    void on_allowaccess_clicked();
+
+    void on_declineaccess_clicked();
+
+    void on_showCardboxButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QLineEdit* lineEdit;
     std::unique_ptr<Sensor> s1;
-    // std::unique_ptr<Schuifdeur> d1;
-    // std::unique_ptr<Draaideur> d2;
-    // std::unique_ptr<Draaideur> d3;
+
     std::vector<std::unique_ptr<Deur>> deuren;
 
+    std::shared_ptr<Slot> hs1;
     std::shared_ptr<Slot> slot;
     std::shared_ptr<Sleutelslot> sl1;
     std::shared_ptr<Sleutelslot> sl2;

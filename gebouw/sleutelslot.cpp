@@ -1,5 +1,4 @@
 #include "sleutelslot.h"
-#include "defines.h"
 #include <string>
 #include <QDebug>
 
@@ -10,7 +9,6 @@ void Sleutelslot::lock(){
 }
 
 void Sleutelslot::unlock(const std::string& key){
-
     if (key == correctKey) {
         locked = UNLOCKED;
     }

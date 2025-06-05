@@ -12,7 +12,9 @@ SOURCES += \
     codeslot.cpp \
     deur.cpp \
     draaideur.cpp \
+    drukbox.cpp \
     hallsensor.cpp \
+    herkenningsslot.cpp \
     main.cpp \
     mainwindow.cpp \
     schuifdeur.cpp \
@@ -21,11 +23,14 @@ SOURCES += \
     slot.cpp
 
 HEADERS += \
+    afdrukker.h \
     codeslot.h \
     defines.h \
     deur.h \
     draaideur.h \
+    drukbox.h \
     hallsensor.h \
+    herkenningsslot.h \
     mainwindow.h \
     schuifdeur.h \
     sensor.h \

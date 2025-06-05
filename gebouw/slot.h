@@ -1,6 +1,9 @@
 #ifndef SLOT_H
 #define SLOT_H
 #include <string>
+#include <map>
+
+#include "defines.h"
 
 class Slot
 {

@@ -16,6 +16,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -33,6 +34,12 @@ public:
     QLineEdit *codeInput_3;
     QLineEdit *codeInput_4;
     QLineEdit *codeInput_5;
+    QLineEdit *nameInput;
+    QPushButton *allowaccess;
+    QPushButton *declineaccess;
+    QLineEdit *name;
+    QTextBrowser *textBrowser;
+    QPushButton *showCardboxButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -40,12 +47,12 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(800, 600);
+        MainWindow->resize(807, 744);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         schuifdeurSensorKnop = new QPushButton(centralwidget);
         schuifdeurSensorKnop->setObjectName("schuifdeurSensorKnop");
-        schuifdeurSensorKnop->setGeometry(QRect(590, 100, 141, 31));
+        schuifdeurSensorKnop->setGeometry(QRect(650, 160, 141, 31));
         D1 = new QPushButton(centralwidget);
         D1->setObjectName("D1");
         D1->setGeometry(QRect(580, 250, 80, 24));
@@ -70,10 +77,28 @@ public:
         codeInput_5 = new QLineEdit(centralwidget);
         codeInput_5->setObjectName("codeInput_5");
         codeInput_5->setGeometry(QRect(670, 400, 113, 28));
+        nameInput = new QLineEdit(centralwidget);
+        nameInput->setObjectName("nameInput");
+        nameInput->setGeometry(QRect(580, 490, 113, 28));
+        allowaccess = new QPushButton(centralwidget);
+        allowaccess->setObjectName("allowaccess");
+        allowaccess->setGeometry(QRect(702, 470, 91, 29));
+        declineaccess = new QPushButton(centralwidget);
+        declineaccess->setObjectName("declineaccess");
+        declineaccess->setGeometry(QRect(702, 510, 91, 29));
+        name = new QLineEdit(centralwidget);
+        name->setObjectName("name");
+        name->setGeometry(QRect(650, 10, 113, 28));
+        textBrowser = new QTextBrowser(centralwidget);
+        textBrowser->setObjectName("textBrowser");
+        textBrowser->setGeometry(QRect(570, 550, 221, 141));
+        showCardboxButton = new QPushButton(centralwidget);
+        showCardboxButton->setObjectName("showCardboxButton");
+        showCardboxButton->setGeometry(QRect(460, 650, 101, 29));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 25));
+        menubar->setGeometry(QRect(0, 0, 807, 25));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
@@ -91,6 +116,9 @@ public:
         D1->setText(QCoreApplication::translate("MainWindow", "D1", nullptr));
         D2->setText(QCoreApplication::translate("MainWindow", "D2", nullptr));
         D3->setText(QCoreApplication::translate("MainWindow", "D3", nullptr));
+        allowaccess->setText(QCoreApplication::translate("MainWindow", "Allow access", nullptr));
+        declineaccess->setText(QCoreApplication::translate("MainWindow", "Deny access", nullptr));
+        showCardboxButton->setText(QCoreApplication::translate("MainWindow", "Show cardbox", nullptr));
     } // retranslateUi
 
 };
