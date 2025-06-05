@@ -3,7 +3,8 @@
 HerkenningsSlot::HerkenningsSlot() : db1(nullptr), locked(LOCKED) {}
 
 void HerkenningsSlot::unlock(const std::string& name){
-    if (cardbox[name]){
+    auto naam = cardbox.find(name);
+    if (naam != cardbox.end() && naam->second){
         locked=UNLOCKED;
     }
 }
